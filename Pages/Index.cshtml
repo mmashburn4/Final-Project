@@ -1,16 +1,41 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Top 30 Artists</h1>
 </div>
-
-<p>List of Record Labels</p>
-@foreach (var r in Model.RecordLabels)
-{
-    <h1>@Html.DisplayFor(modelItem => r.Name)</h1>
-}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @{
+                    var nameSort = "name_asc";
+                    if (Model.CurrentSort == "name_asc")
+                    {
+                        nameSort = "name_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@nameSort">@Html.DisplayNameFor(model => model.Artists[0].Name)</a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-CurrentSort="genre">@Html.DisplayNameFor(model => model.Artists[0].Genre)</a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-CurrentSort="age">@Html.DisplayNameFor(model => model.Artists[0].Age)</a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-CurrentSort ="recordLabel">@Html.DisplayNameFor(model => model.Artists[0].RecordLabel)</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var artist in Model.Artists){
+            <tr>
+                <th scope="row">@Html.DisplayFor(modelItem => artist.Name)</th>
+                <td>@Html.DisplayFor(modelItem => artist.Genre)</td>
+                <td>@Html.DisplayFor(modelItem => artist.Age)</td>
+                <td>@Html.DisplayFor(modelItem => artist.RecordLabel.Name)</td>
+            </tr>
+        }
+    </tbody>
+</table>

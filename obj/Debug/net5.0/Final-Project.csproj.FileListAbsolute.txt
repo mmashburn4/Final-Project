@@ -65,3 +65,6 @@ C:\Users\micha\OneDrive - West Texas A and M University\Advanced Business Progra
 C:\Users\micha\OneDrive - West Texas A and M University\Advanced Business Programming\Final Project\Final-Project\obj\Debug\net5.0\ref\Final-Project.dll
 C:\Users\micha\OneDrive - West Texas A and M University\Advanced Business Programming\Final Project\Final-Project\obj\Debug\net5.0\Final-Project.pdb
 C:\Users\micha\OneDrive - West Texas A and M University\Advanced Business Programming\Final Project\Final-Project\obj\Debug\net5.0\Final-Project.genruntimeconfig.cache
+C:\Users\micha\OneDrive - West Texas A and M University\Advanced Business Programming\Final Project\Final-Project\obj\Debug\net5.0\Razor\Pages\Sony.cshtml.g.cs
+C:\Users\micha\OneDrive - West Texas A and M University\Advanced Business Programming\Final Project\Final-Project\obj\Debug\net5.0\Razor\Pages\Universal.cshtml.g.cs
+C:\Users\micha\OneDrive - West Texas A and M University\Advanced Business Programming\Final Project\Final-Project\obj\Debug\net5.0\Razor\Pages\Warner.cshtml.g.cs

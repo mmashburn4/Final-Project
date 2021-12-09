@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211203011400_InitialCreate")]
+    [Migration("20211204183713_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,16 +23,21 @@ namespace Final_Project.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Age")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Genre")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("age")
+                    b.Property<int>("RecordLabelID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ArtistID");
+
+                    b.HasIndex("RecordLabelID");
 
                     b.ToTable("Artists");
                 });
@@ -52,6 +57,15 @@ namespace Final_Project.Migrations
                     b.HasKey("RecordLabelID");
 
                     b.ToTable("RecordLabels");
+                });
+
+            modelBuilder.Entity("Final_Project.Models.Artist", b =>
+                {
+                    b.HasOne("Final_Project.Models.RecordLabel", "RecordLabel")
+                        .WithMany("Artists")
+                        .HasForeignKey("RecordLabelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

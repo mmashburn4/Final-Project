@@ -1,0 +1,39 @@
+@page
+@model SonyModel
+@{
+    ViewData["Title"] = "Sony Music Entertainment";
+}
+<h1>Sony Music Entertainment</h1>
+<p>@Model.RecordLabels[1].Description</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Artists[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artists[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artists[0].Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artists[0].RecordLabel)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var artist in Model.Artists){
+            <tr>
+                @if(artist.RecordLabelID == 2)
+                {
+                <th scope="row">@Html.DisplayFor(modelItem => artist.Name)</th>
+                <td>@Html.DisplayFor(modelItem => artist.Genre)</td>
+                <td>@Html.DisplayFor(modelItem => artist.Age)</td>
+                <td>@Html.DisplayFor(modelItem => artist.RecordLabel.Name)</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

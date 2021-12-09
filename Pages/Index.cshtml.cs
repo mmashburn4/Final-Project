@@ -15,6 +15,9 @@ namespace Final_Project.Pages
         private readonly Context _context;
         private readonly ILogger<IndexModel> _logger;
         public List<RecordLabel> RecordLabels {get; set;}
+        public List<Artist> Artists {get; set;}
+        [BindProperty(SupportsGet = true)]
+        public string CurrentSort {get; set;}
 
         public IndexModel(Context context, ILogger<IndexModel> logger)
         {
@@ -25,6 +28,26 @@ namespace Final_Project.Pages
         public void OnGet()
         {
             RecordLabels = _context.RecordLabels.ToList();
+            var query = _context.Artists.Select(a => a);
+            switch(CurrentSort)
+            {
+                case "name_asc":
+                    query = query.OrderBy(a => a.Name);
+                    break;
+                case "name_desc":
+                    query = query.OrderByDescending(a => a.Name);
+                    break;
+                case "genre":
+                    query = query.OrderBy(a => a.Genre);
+                    break;
+                case "age":
+                    query = query.OrderBy(a => a.Age);
+                    break;
+                case "recordLabel":
+                    query = query.OrderBy(a => a.RecordLabel);
+                    break;
+            }
+            Artists = _context.Artists.ToList();
         }
     }
 }
